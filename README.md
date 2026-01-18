@@ -105,7 +105,7 @@ Open index.html directly in your browser
 or use Live Server in VS Code.
 
 
-🤝 Contributing
+# 🤝 Contributing
 
 Contributions are welcome from everyone.
 
@@ -136,7 +136,7 @@ git push origin feature/your-feature-name
 
 
 
-📌 Contribution Guidelines
+# 📌 Contribution Guidelines
 
 Keep code clean and readable
 
@@ -148,7 +148,7 @@ Test before submitting
 
 Follow existing file structure
 
-👨‍💻 Author
+# 👨‍💻 Author
 
 Aditya
 
@@ -174,6 +174,6 @@ Open an issue on GitHub
 
 Reach out via repository discussions
 
-Built with ❤️ for ISTE HIT-SC Open Source 101
+# Built with ❤️ for ISTE HIT-SC Open Source 101
 
 Learn • Build • Contribute
