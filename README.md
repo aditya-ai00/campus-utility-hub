@@ -5,9 +5,14 @@ A beginner-friendly open source student utility website developed under **ISTE H
 
 It brings essential academic and productivity tools together in one simple, browser-based platform.
 
+---
+## 🚀 Live Demo
 
+👉 **https://aditya-ai00.github.io/campus-utility-hub/**
 
 ---
+
+
 
 ## ✨ Features
 
@@ -40,11 +45,6 @@ Works smoothly on desktop, tablet, and mobile.
 
 ---
 
-## 🚀 Live Demo
-
-👉 **https://aditya-ai00.github.io/campus-utility-hub/**
-
----
 
 ## 📸 Preview
 <img width="1221" height="756" alt="Screenshot 2026-01-18 at 18 35 24" src="https://github.com/user-attachments/assets/e6ad9e34-ed23-4967-8567-78ec8653e908" />
