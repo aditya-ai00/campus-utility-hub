@@ -163,6 +163,12 @@ Have suggestions or issues?
 Open an issue on GitHub
 
 Reach out via repository discussions
+## 🐞 Issues
+
+If you find a bug or want to suggest a feature:
+
+👉 https://github.com/aditya-ai00/campus-utility-hub/issues
+
 
 ## Built with ❤️ for ISTE HIT-SC Open Source 101
 
