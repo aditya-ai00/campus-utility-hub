@@ -138,7 +138,7 @@ Follow existing file structure
 
 Aditya
 
-GitHub: https://github.com/aditya-ai00 
+GitHub: https://github.com/aditya-ai00 <br>
 LinkedIn: https://www.linkedin.com/in/aditya-kumar23/
 
 ⭐ Support the Project
