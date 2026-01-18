@@ -1,167 +1,93 @@
-let timerInterval;
-let countdownInterval;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Utility Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* CGPA */
-function calculateCGPA() {
-    let g1 = Number(g1El().value);
-    let g2 = Number(g2El().value);
-    let g3 = Number(g3El().value);
+<h1>🎓 Campus Utility Hub</h1>
+<p class="subtitle">Study smarter, not harder</p>
 
-    if (!g1 || !g2 || !g3) {
-        result("cgpaResult", "Enter all GPA values");
-        return;
-    }
+<div class="container">
 
-    let cgpa = (g1 + g2 + g3) / 3;
-    result("cgpaResult", "CGPA: " + cgpa.toFixed(2));
-}
+    <!-- CGPA -->
+    <div class="card cgpa">
+        <h2>📘 CGPA Calculator</h2>
+        <input type="number" id="g1" placeholder="Subject 1 GPA">
+        <input type="number" id="g2" placeholder="Subject 2 GPA">
+        <input type="number" id="g3" placeholder="Subject 3 GPA">
 
-function resetCGPA() {
-    g1El().value = "";
-    g2El().value = "";
-    g3El().value = "";
-    result("cgpaResult", "");
-}
+        <button onclick="calculateCGPA()">Calculate</button>
+        <button class="reset" onclick="resetCGPA()">Reset</button>
 
-/* Attendance */
-function calculateAttendance() {
-    let total = Number(document.getElementById("total").value);
-    let attended = Number(document.getElementById("attended").value);
+        <p id="cgpaResult"></p>
+    </div>
 
-    if (total <= 0 || attended > total) {
-        result("attendanceResult", "Invalid input");
-        return;
-    }
+    <!-- Attendance -->
+    <div class="card attendance">
+        <h2>📊 Attendance</h2>
+        <input type="number" id="total" placeholder="Total Classes">
+        <input type="number" id="attended" placeholder="Attended Classes">
 
-    let percent = (attended / total) * 100;
-    let status = percent >= 75 ? "Safe ✅" : "Shortage ⚠️";
+        <button onclick="calculateAttendance()">Calculate</button>
+        <button class="reset" onclick="resetAttendance()">Reset</button>
 
-    result(
-        "attendanceResult",
-        percent.toFixed(2) + "% — " + status
-    );
-}
+        <p id="attendanceResult"></p>
+    </div>
 
-function resetAttendance() {
-    document.getElementById("total").value = "";
-    document.getElementById("attended").value = "";
-    result("attendanceResult", "");
-}
+    <!-- Countdown -->
+    <div class="card countdown">
+        <h2>⏳ Exam Countdown</h2>
+        <input type="date" id="examDate">
 
-/* Countdown */
-function startCountdown() {
-    clearInterval(countdownInterval);
+        <button onclick="startCountdown()">Start</button>
+        <button class="reset" onclick="resetCountdown()">Reset</button>
 
-    let date = new Date(document.getElementById("examDate").value);
+        <p id="countdownResult"></p>
+    </div>
 
-    countdownInterval = setInterval(() => {
-        let now = new Date();
-        let diff = date - now;
+    <!-- Pomodoro -->
+    <div class="card timer">
+        <h2>🍅 Study Timer</h2>
 
-        if (diff <= 0) {
-            result("countdownResult", "Exam Day 🎉");
-            clearInterval(countdownInterval);
-            return;
-        }
+        <button onclick="startTimer()">Start 25 Min</button>
+        <button class="reset" onclick="resetTimer()">Reset</button>
 
-        let d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        let h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        let m = Math.floor((diff / (1000 * 60)) % 60);
+        <p id="timerResult">25:00</p>
+    </div>
 
-        result("countdownResult", `${d}d ${h}h ${m}m left`);
-    }, 1000);
-}
+    <!-- EXPENSE TRACKER -->
+<div class="card expense">
+    <h2>💰 Expense Tracker</h2>
 
-function resetCountdown() {
-    clearInterval(countdownInterval);
-    document.getElementById("examDate").value = "";
-    result("countdownResult", "");
-}
+    <input type="number" id="expenseAmount" placeholder="Enter amount">
 
-/* Pomodoro */
-function startTimer() {
-    clearInterval(timerInterval);
-    let time = 25 * 60;
+    <button onclick="addExpense()">Add Expense</button>
+    <button class="reset" onclick="resetExpense()">Reset</button>
 
-    timerInterval = setInterval(() => {
-        let min = Math.floor(time / 60);
-        let sec = time % 60;
+    <p id="expenseResult">Total: ₹0</p>
+</div>
 
-        result(
-            "timerResult",
-            min + ":" + (sec < 10 ? "0" : "") + sec
-        );
+<!-- WATER TRACKER -->
+<div class="card water">
+    <h2>💧 Water Intake</h2>
 
-        time--;
+    <button onclick="addWater()">Add 1 Glass</button>
+    <button class="reset" onclick="resetWater()">Reset</button>
 
-        if (time < 0) {
-            clearInterval(timerInterval);
-            result("timerResult", "Break Time ☕");
-        }
-    }, 1000);
-}
+    <p id="waterResult">0 / 8 glasses</p>
+</div>
 
-function resetTimer() {
-    clearInterval(timerInterval);
-    result("timerResult", "25:00");
-}
 
-/* Helpers */
-function result(id, text) {
-    document.getElementById(id).innerText = text;
-}
+</div>
 
-function g1El(){ return document.getElementById("g1"); }
-function g2El(){ return document.getElementById("g2"); }
-function g3El(){ return document.getElementById("g3"); }
+<footer>
+    
+</footer>
 
-/* ==========================
-   EXPENSE TRACKER
-========================== */
-
-let totalExpense = 0;
-
-function addExpense() {
-    let amount = Number(document.getElementById("expenseAmount").value);
-
-    if (amount <= 0) return;
-
-    totalExpense += amount;
-
-    document.getElementById("expenseResult").innerText =
-        "Total: ₹" + totalExpense;
-
-    document.getElementById("expenseAmount").value = "";
-}
-
-function resetExpense() {
-    totalExpense = 0;
-    document.getElementById("expenseAmount").value = "";
-    document.getElementById("expenseResult").innerText = "Total: ₹0";
-}
-
-/* ==========================
-   WATER TRACKER
-========================== */
-
-let waterCount = 0;
-const waterGoal = 8;
-
-function addWater() {
-    if (waterCount < waterGoal) {
-        waterCount++;
-    }
-
-    document.getElementById("waterResult").innerText =
-        waterCount + " / " + waterGoal + " glasses";
-
-    if (waterCount === waterGoal) {
-        document.getElementById("waterResult").innerText += " ✅";
-    }
-}
-
-function resetWater() {
-    waterCount = 0;
-    document.getElementById("waterResult").innerText =
-        "0 / 8 glasses";
-}
+<script src="script.js"></script>
+</body>
+</html>
