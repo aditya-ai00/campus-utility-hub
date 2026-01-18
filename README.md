@@ -96,20 +96,21 @@ The codebase is intentionally simple so **first-time contributors can participat
 
 git clone https://github.com/aditya-ai00/campus-utility-hub.git
 
-2. Open the project 
+### 2. Open the project 
+
 cd campus-utility-hub
 
-3. Run
+### 3. Run
 
 Open index.html directly in your browser
 or use Live Server in VS Code.
 
 
-# 🤝 Contributing
+## 🤝 Contributing
 
 Contributions are welcome from everyone.
 
-How to Contribute
+### How to Contribute
 
 Fork the repository
 
@@ -136,7 +137,7 @@ git push origin feature/your-feature-name
 
 
 
-# 📌 Contribution Guidelines
+## 📌 Contribution Guidelines
 
 Keep code clean and readable
 
@@ -148,7 +149,7 @@ Test before submitting
 
 Follow existing file structure
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 Aditya
 
@@ -166,7 +167,7 @@ If you find this project helpful:
 
 Every contribution helps beginners learn.
 
-# 📬 Contact
+## 📬 Contact
 
 Have suggestions or issues?
 
@@ -174,6 +175,6 @@ Open an issue on GitHub
 
 Reach out via repository discussions
 
-# Built with ❤️ for ISTE HIT-SC Open Source 101
+## Built with ❤️ for ISTE HIT-SC Open Source 101
 
 Learn • Build • Contribute
