@@ -45,8 +45,8 @@ Works smoothly on desktop, tablet, and mobile.
 ---
 
 ## 📸 Preview
+<img width="1221" height="756" alt="Screenshot 2026-01-18 at 18 35 24" src="https://github.com/user-attachments/assets/e6ad9e34-ed23-4967-8567-78ec8653e908" />
 
-![Campus Utility Hub Preview](https://user-images.githubusercontent.com/182134948/537285360-8db921d3-853b-4014-94e4-c8f1fd7010e5.png)
 
 ---
 
@@ -94,10 +94,9 @@ The codebase is intentionally simple so **first-time contributors can participat
 
 ### 1. Clone the repository
 
-```bash
 git clone https://github.com/aditya-ai00/campus-utility-hub.git
 
-2. Open the project
+2. Open the project 
 cd campus-utility-hub
 
 3. Run
@@ -105,44 +104,6 @@ cd campus-utility-hub
 Open index.html directly in your browser
 or use Live Server in VS Code.
 
-📘 Usage Guide
-CGPA Calculator
-
-Enter GPA values
-
-Click Calculate
-
-Reset anytime
-
-Attendance Calculator
-
-Enter total and attended classes
-
-Get percentage and shortage result
-
-Exam Countdown
-
-Select exam date
-
-Start live countdown
-
-Study Timer
-
-Start 25-minute Pomodoro session
-
-Reset when needed
-
-Expense Tracker
-
-Enter amount
-
-Track total expenses instantly
-
-Water Intake
-
-Add glasses of water
-
-Track daily hydration goal
 
 🤝 Contributing
 
@@ -174,23 +135,6 @@ Push the branch
 git push origin feature/your-feature-name
 
 
-Open a Pull Request
-
-💡 Ideas for Contributions
-
-🌙 Dark mode toggle
-
-💾 Save data using localStorage
-
-📊 Charts for expense tracking
-
-📱 Mobile UI improvements
-
-🎨 Animations and transitions
-
-♿ Accessibility improvements
-
-📖 Documentation enhancement
 
 📌 Contribution Guidelines
 
