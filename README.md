@@ -60,20 +60,6 @@ No frameworks. No backend. Fully browser-based.
 
 ---
 
-## 📁 Project Structure
-
-campus-utility-hub/
-│
-├── index.html
-├── src/
-│ ├── style.css
-│ └── script.js
-│
-├── README.md
-└── LICENSE
-
-
----
 
 ## 🎯 Purpose of the Project
 
