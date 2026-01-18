@@ -166,7 +166,7 @@ If you find this project helpful:
 
 Every contribution helps beginners learn.
 
-📬 Contact
+##📬 Contact
 
 Have suggestions or issues?
 
