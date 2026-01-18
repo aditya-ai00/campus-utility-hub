@@ -1,156 +1,156 @@
-🎓 Campus Utility Hub
+# 🎓 Campus Utility Hub
 
-Campus Utility Hub is a beginner-friendly student utility web application built using HTML, CSS, and JavaScript.
-It provides essential academic and daily life tools for students in one clean, colourful, and easy-to-use interface.
+A clean, beginner-friendly student utility web application built using **HTML, CSS, and JavaScript**.  
+Campus Utility Hub brings multiple academic and daily-use tools together in one simple, colourful interface.
 
-🏆 This repository is part of Open Source 101, organised by ISTE HIT-SC.
+🏆 This repository is part of **Open Source 101**, organised by **ISTE HIT-SC**.
 
-✨ Features
+---
 
-📘 CGPA Calculator
-Calculate CGPA instantly using subject GPAs.
+## ✨ Features
 
-📊 Attendance Calculator
-Check attendance percentage and shortage status.
+📘 **CGPA Calculator**  
+Calculate CGPA instantly using subject GPA values.
 
-⏳ Exam Countdown Timer
+📊 **Attendance Calculator**  
+Find the attendance percentage and the shortage status.
+
+⏳ **Exam Countdown Timer**  
 Live countdown to upcoming exams.
 
-🍅 Study Timer (Pomodoro)
+🍅 **Study Timer (Pomodoro)**  
 25-minute focus timer with reset option.
 
-💰 Expense Tracker
-Track daily expenses and view total spending.
+💰 **Expense Tracker**  
+Track daily spending and total expenses.
 
-💧 Water Intake Tracker
-Monitor hydration with daily water goals.
+💧 **Water Intake Tracker**  
+Monitor daily hydration goals.
 
-🎨 Colourful UI
-Modern gradient layout with responsive cards.
+🎨 **Modern Colourful UI**  
+Gradient background with card-based layout.
 
-⚡ Instant Results
-All calculations are updated in real time.
+⚡ **Instant Calculations**  
+Real-time updates without page reload.
 
-📱 Responsive Design
-Works smoothly on desktop and mobile.
+📱 **Responsive Design**  
+Works smoothly on desktop, tablet, and mobile.
 
-🚀 Live Demo
+---
 
-👉 https://aditya-ai00.github.io/campus-utility-hub/
+## 🚀 Live Demo
 
-📸 Preview
-<img width="1221" height="756" alt="Screenshot 2026-01-18 at 18 35 24" src="https://github.com/user-attachments/assets/490969c4-164a-447d-b456-6c3179614fa7" />
+👉 **https://aditya-ai00.github.io/campus-utility-hub/**
 
+---
 
-🛠️ Built With
+## 📸 Preview
 
-HTML5 – Structure
+![Campus Utility Hub Preview](https://user-images.githubusercontent.com/182134948/537285360-8db921d3-853b-4014-94e4-c8f1fd7010e5.png)
 
-CSS3 – Styling and layout
+---
 
-JavaScript (Vanilla) – Application logic
+## 🛠️ Built With
 
-GitHub Pages – Deployment
+- **HTML5** – Structure  
+- **CSS3** – Styling and layout  
+- **JavaScript (Vanilla)** – Logic and interactivity  
+- **GitHub Pages** – Hosting and deployment  
 
 No frameworks. No backend. Fully browser-based.
 
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
 campus-utility-hub/
 │
 ├── index.html
 ├── src/
-│   ├── style.css
-│   └── script.js
+│ ├── style.css
+│ └── script.js
 │
 ├── README.md
 └── LICENSE
 
-🎯 Purpose of the Project
+
+---
+
+## 🎯 Purpose of the Project
 
 This project was created to:
 
-Introduce students to open source contribution
+- Introduce students to open source contribution
+- Teach frontend fundamentals
+- Practice GitHub workflows
+- Encourage collaboration
+- Provide a real-world beginner project
 
-Teach basic frontend development
+The codebase is intentionally simple so **first-time contributors can participate confidently**.
 
-Practice GitHub workflows
+---
 
-Encourage collaboration and learning
+## ▶️ Run Locally
 
-Provide real-world mini-project experience
+### 1. Clone the repository
 
-It is designed to enable even first-year students to contribute confidently.
+```bash
+git clone https://github.com/aditya-ai00/campus-utility-hub.git
 
-▶️ How to Run Locally
-1. Clone the repository: git clone https://github.com/aditya-ai00/campus-utility-hub.git
-
-2. Open the folder
+2. Open the project
 cd campus-utility-hub
 
-3. Run the project
+3. Run
 
-Simply open:
-
-index.html
-
-
-in your browser
+Open index.html directly in your browser
 or use Live Server in VS Code.
 
-🎯 Usage Guide
-📘 CGPA Calculator
+📘 Usage Guide
+CGPA Calculator
 
-Enter subject GPA values
+Enter GPA values
 
 Click Calculate
 
-Use Reset to clear fields
+Reset anytime
 
-📊 Attendance Calculator
+Attendance Calculator
 
-Enter total classes
+Enter total and attended classes
 
-Enter attended classes
+Get percentage and shortage result
 
-Get the percentage and the shortage status
-
-⏳ Exam Countdown
+Exam Countdown
 
 Select exam date
 
-Click Start
+Start live countdown
 
-Live countdown begins instantly
+Study Timer
 
-🍅 Study Timer
+Start 25-minute Pomodoro session
 
-Click Start 25 Min
+Reset when needed
 
-The timer runs automatically
-
-Reset anytime
-
-💰 Expense Tracker
+Expense Tracker
 
 Enter amount
 
-Click Add Expense
+Track total expenses instantly
 
-Total updates instantly
+Water Intake
 
-💧 Water Intake
-
-Click Add 1 Glass
+Add glasses of water
 
 Track daily hydration goal
 
 🤝 Contributing
 
-We welcome all contributions.
+Contributions are welcome from everyone.
 
 How to Contribute
 
-Fork this repository
+Fork the repository
 
 Clone your fork
 
@@ -164,12 +164,12 @@ git checkout -b feature/your-feature-name
 
 Make your changes
 
-Commit with a clear message
+Commit clearly
 
 git commit -m "feat: add dark mode toggle"
 
 
-Push your branch
+Push the branch
 
 git push origin feature/your-feature-name
 
@@ -178,14 +178,19 @@ Open a Pull Request
 
 💡 Ideas for Contributions
 
-🎨 Add dark mode
-📊 Add charts for expense tracking
+🌙 Dark mode toggle
+
 💾 Save data using localStorage
-📱 Improve mobile UI
-⚡ Add animations
-📖 Improve documentation
-🧪 Add validations
-♿ Improve accessibility
+
+📊 Charts for expense tracking
+
+📱 Mobile UI improvements
+
+🎨 Animations and transitions
+
+♿ Accessibility improvements
+
+📖 Documentation enhancement
 
 📌 Contribution Guidelines
 
@@ -193,39 +198,37 @@ Keep code clean and readable
 
 One feature per pull request
 
-Avoid pushing directly to main
+Do not push directly to main
 
 Test before submitting
 
-Follow existing structure
+Follow existing file structure
 
-🧑‍💻 Author
+👨‍💻 Author
 
 Aditya
 
 GitHub: @aditya-ai00
 
-⭐ Show Your Support
+⭐ Support the Project
 
-If you like this project:
+If you find this project helpful:
 
-Give it a ⭐
+⭐ Star the repository
 
-Fork it
+🍴 Fork it
 
-Share with friends
+🧑‍💻 Contribute something small
 
-Contribute something small
+Every contribution helps beginners learn.
 
-Every contribution matters.
+📬 Contact
 
-📧 Contact
+Have suggestions or issues?
 
-For queries or suggestions:
+Open an issue on GitHub
 
-Open an issue
-
-Reach out via GitHub
+Reach out via repository discussions
 
 Built with ❤️ for ISTE HIT-SC Open Source 101
 
