@@ -141,15 +141,15 @@ Aditya
 GitHub: https://github.com/aditya-ai00 <br>
 LinkedIn: https://www.linkedin.com/in/aditya-kumar23/
 
-⭐ Support the Project
+## ⭐ Support the Project
 
 If you find this project helpful:
 
-⭐ Star the repository
+### ⭐ Star the repository
 
-🍴 Fork it
+### 🍴 Fork it
 
-🧑‍💻 Contribute something small
+### 🧑‍💻 Contribute something small
 
 Every contribution helps beginners learn.
 
