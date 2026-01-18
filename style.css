@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    text-align: center;
+    color: #fff;
+}
+
+.subtitle {
+    opacity: 0.9;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #ffffff;
+    color: #333;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 95%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #4f46e5;
+    color: #fff;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.reset {
+    background: #ef4444;
+}
+
+.cgpa { border-top: 6px solid #3b82f6; }
+.attendance { border-top: 6px solid #10b981; }
+.countdown { border-top: 6px solid #f59e0b; }
+.timer { border-top: 6px solid #ec4899; }
+
+footer {
+    margin: 30px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+.expense { border-top: 6px solid #22c55e; }
+.water { border-top: 6px solid #0ea5e9; }
