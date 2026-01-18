@@ -1,7 +1,7 @@
 # 🎓 Campus Utility Hub
 
-A clean, beginner-friendly student utility web application built using **HTML, CSS, and JavaScript**.  
-Campus Utility Hub brings multiple academic and daily-use tools together in one simple, colourful interface.
+A beginner-friendly open source student utility web application developed under **ISTE HIT-SC Open Source 101**.  
+It brings essential academic and productivity tools together in one simple, browser-based platform.
 
 🏆 This repository is part of **Open Source 101**, organised by **ISTE HIT-SC**.
 
@@ -153,7 +153,8 @@ Follow existing file structure
 
 Aditya
 
-GitHub: @aditya-ai00
+GitHub: https://github.com/aditya-ai00 
+LinkedIn: https://www.linkedin.com/in/aditya-kumar23/
 
 ⭐ Support the Project
 
