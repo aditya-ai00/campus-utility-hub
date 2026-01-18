@@ -1,6 +1,6 @@
 # 🎓 Campus Utility Hub
 A web-based platform that provides essential student tools for quick calculations, tracking, and productivity
-and A beginner-friendly open source student utility web application developed under **ISTE HIT-SC Open Source 101**.  
+and a beginner-friendly open source student utility website developed under **ISTE HIT-SC Open Source 101**.  
 It brings essential academic and productivity tools together in one simple, browser-based platform.
 
 
