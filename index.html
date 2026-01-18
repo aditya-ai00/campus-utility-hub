@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Utility Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎓 Campus Utility Hub</h1>
+<p class="subtitle">Study smarter, not harder</p>
+
+<div class="container">
+
+    <!-- CGPA -->
+    <div class="card cgpa">
+        <h2>📘 CGPA Calculator</h2>
+        <input type="number" id="g1" placeholder="Subject 1 GPA">
+        <input type="number" id="g2" placeholder="Subject 2 GPA">
+        <input type="number" id="g3" placeholder="Subject 3 GPA">
+
+        <button onclick="calculateCGPA()">Calculate</button>
+        <button class="reset" onclick="resetCGPA()">Reset</button>
+
+        <p id="cgpaResult"></p>
+    </div>
+
+    <!-- Attendance -->
+    <div class="card attendance">
+        <h2>📊 Attendance</h2>
+        <input type="number" id="total" placeholder="Total Classes">
+        <input type="number" id="attended" placeholder="Attended Classes">
+
+        <button onclick="calculateAttendance()">Calculate</button>
+        <button class="reset" onclick="resetAttendance()">Reset</button>
+
+        <p id="attendanceResult"></p>
+    </div>
+
+    <!-- Countdown -->
+    <div class="card countdown">
+        <h2>⏳ Exam Countdown</h2>
+        <input type="date" id="examDate">
+
+        <button onclick="startCountdown()">Start</button>
+        <button class="reset" onclick="resetCountdown()">Reset</button>
+
+        <p id="countdownResult"></p>
+    </div>
+
+    <!-- Pomodoro -->
+    <div class="card timer">
+        <h2>🍅 Study Timer</h2>
+
+        <button onclick="startTimer()">Start 25 Min</button>
+        <button class="reset" onclick="resetTimer()">Reset</button>
+
+        <p id="timerResult">25:00</p>
+    </div>
+
+    <!-- EXPENSE TRACKER -->
+<div class="card expense">
+    <h2>💰 Expense Tracker</h2>
+
+    <input type="number" id="expenseAmount" placeholder="Enter amount">
+
+    <button onclick="addExpense()">Add Expense</button>
+    <button class="reset" onclick="resetExpense()">Reset</button>
+
+    <p id="expenseResult">Total: ₹0</p>
+</div>
+
+<!-- WATER TRACKER -->
+<div class="card water">
+    <h2>💧 Water Intake</h2>
+
+    <button onclick="addWater()">Add 1 Glass</button>
+    <button class="reset" onclick="resetWater()">Reset</button>
+
+    <p id="waterResult">0 / 8 glasses</p>
+</div>
+
+
+</div>
+
+<footer>
+    
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
