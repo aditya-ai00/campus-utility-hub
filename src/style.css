@@ -1,73 +1,193 @@
-body {
+* {
     margin: 0;
-    font-family: Arial;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes backgroundAnimation {
+    0% { 
+        background-position: 0% 50%; 
+    }
+    50% { 
+        background-position: 100% 50%; 
+    }
+    100% { 
+        background-position: 0% 50%; 
+    }
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+    background-size: 400% 400%;
+    animation: backgroundAnimation 15s ease infinite;
     color: #fff;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .subtitle {
+    font-size: 18px;
+    margin-bottom: 40px;
     opacity: 0.9;
 }
 
 .container {
-    width: 90%;
-    margin: auto;
-    margin-top: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 0 10px;
 }
 
 .card {
-    background: #ffffff;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     color: #333;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
 }
 
 .card h2 {
-    margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 20px;
 }
 
 input {
-    width: 95%;
-    padding: 10px;
-    margin: 6px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-button {
-    width: 95%;
-    padding: 10px;
-    margin-top: 8px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    background: #4f46e5;
-    color: #fff;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #f1efef;
+    border-radius: 10px;
     font-size: 15px;
 }
 
+input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 button:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    transition: 0.2s;
 }
 
 .reset {
-    background: #ef4444;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-.cgpa { border-top: 6px solid #3b82f6; }
-.attendance { border-top: 6px solid #10b981; }
-.countdown { border-top: 6px solid #f59e0b; }
-.timer { border-top: 6px solid #ec4899; }
-
-footer {
-    margin: 30px;
-    font-size: 14px;
-    opacity: 0.9;
+.reset:hover {
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
 }
-.expense { border-top: 6px solid #22c55e; }
-.water { border-top: 6px solid #0ea5e9; }
+
+.card p {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.card p:empty {
+    display: none;
+}
+
+.cgpa {
+    border-top: 5px solid #3b82f6;
+}
+
+.cgpa h2 {
+    color: #3b82f6;
+}
+
+.attendance {
+    border-top: 5px solid #10b981;
+}
+
+.attendance h2 {
+    color: #10b981;
+}
+
+.countdown {
+    border-top: 5px solid #f59e0b;
+}
+
+.countdown h2 {
+    color: #f59e0b;
+}
+
+.timer {
+    border-top: 5px solid #ec4899;
+}
+
+.timer h2 {
+    color: #ec4899;
+}
+
+.expense {
+    border-top: 5px solid #22c55e;
+}
+
+.expense h2 {
+    color: #22c55e;
+}
+
+.water {
+    border-top: 5px solid #0ea5e9;
+}
+
+.water h2 {
+    color: #0ea5e9;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}
