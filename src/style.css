@@ -4,27 +4,40 @@
     box-sizing: border-box;
 }
 
-@keyframes backgroundAnimation {
-    0% { 
-        background-position: 0% 50%; 
-    }
-    50% { 
-        background-position: 100% 50%; 
-    }
-    100% { 
-        background-position: 0% 50%; 
-    }
-}
-
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
     background-size: 400% 400%;
-    animation: backgroundAnimation 15s ease infinite;
+    animation: gradientShift 15s ease infinite;
     color: #fff;
     min-height: 100vh;
     text-align: center;
     padding: 20px;
+    transition: background 0.5s ease;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.blue {
+    background: linear-gradient(-45deg, #2196F3, #1976D2, #64B5F6, #42A5F5);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+body.purple {
+    background: linear-gradient(-45deg, #9C27B0, #7B1FA2, #BA68C8, #AB47BC);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+body.dark {
+    background: linear-gradient(-45deg, #1a1a1a, #2d2d2d, #3a3a3a, #252525);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
 }
 
 h1 {
@@ -35,8 +48,36 @@ h1 {
 
 .subtitle {
     font-size: 18px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     opacity: 0.9;
+}
+
+.theme-selector {
+    display: inline-block;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.theme-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.theme-selector select {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.theme-selector select option {
+    background: #333;
+    color: white;
 }
 
 .container {
@@ -67,7 +108,34 @@ h1 {
     margin-bottom: 20px;
 }
 
-input {
+.card .description {
+    background: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+    color: #666;
+    font-size: 14px;
+    border: none;
+}
+
+.timer-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.timer-input label {
+    font-weight: bold;
+    color: #333;
+    min-width: 70px;
+}
+
+.timer-input input {
+    margin: 0;
+}
+
+input,
+select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -76,7 +144,8 @@ input {
     font-size: 15px;
 }
 
-input:focus {
+input:focus,
+select:focus {
     outline: none;
     border-color: #667eea;
 }
@@ -97,7 +166,7 @@ button {
 button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .reset {
@@ -122,6 +191,16 @@ button:hover {
 
 .cgpa {
     border-top: 5px solid #3b82f6;
+}
+
+h1,
+h2 {
+    transition: transform 0.3s ease;
+}
+
+h1:hover,
+h2:hover {
+    transform: scale(1.05);
 }
 
 .cgpa h2 {
@@ -168,6 +247,180 @@ button:hover {
     color: #0ea5e9;
 }
 
+.contribution {
+    border-top: 5px solid #8b5cf6;
+}
+
+.contribution h2 {
+    color: #8b5cf6;
+}
+
+.task-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    position: relative;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.back-btn {
+    width: auto;
+    padding: 12px 24px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 15px;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.task-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.task-input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.task-input-section input {
+    flex: 1;
+    margin: 0;
+}
+
+.task-input-section button {
+    width: auto;
+    padding: 12px 30px;
+    margin: 0;
+}
+
+.task-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border-left: 4px solid #667eea;
+}
+
+.stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.task-list-section {
+    margin-top: 30px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+}
+
+.section-header button {
+    width: auto;
+    padding: 8px 20px;
+    margin: 0;
+    font-size: 14px;
+}
+
+#taskList {
+    min-height: 100px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9fafb;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    transition: 0.3s;
+}
+
+.task-item:hover {
+    background: #f3f4f6;
+    transform: translateX(5px);
+}
+
+.task-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.task-item label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+.task-item.completed {
+    opacity: 0.6;
+}
+
+.task-item.completed label {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task-item button {
+    width: auto;
+    padding: 8px 15px;
+    margin: 0;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    font-size: 14px;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+    font-size: 16px;
+    background: none;
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size: 36px;
@@ -175,6 +428,28 @@ button:hover {
     
     .card {
         padding: 25px;
+    }
+
+    .task-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .task-container {
+        padding: 25px;
+    }
+
+    .task-input-section {
+        flex-direction: column;
+    }
+
+    .task-input-section button {
+        width: 100%;
+    }
+
+    .back-btn {
+        position: static;
+        margin-bottom: 20px;
+        width: 100%;
     }
 }
 
