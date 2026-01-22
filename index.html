@@ -42,7 +42,6 @@
     <!-- Countdown -->
     <div class="card countdown">
         <h2>⏳ Exam Countdown</h2>
-        <label for="examDate">Select exam date</label>
         <input type="date" id="examDate">
 
         <button onclick="startCountdown()">Start</button>
@@ -51,11 +50,16 @@
         <p id="countdownResult"></p>
     </div>
 
-    <!-- Pomodoro -->
+    <!-- Pomodoro:Enhancement -->
     <div class="card timer">
         <h2>🍅 Study Timer</h2>
+        
+        <div class="timer-input">
+            <label>Minutes:</label>
+            <input type="number" id="timerMinutes" placeholder="25" min="1" max="120">
+        </div>
 
-        <button onclick="startTimer()">Start 25 Min</button>
+        <button onclick="startTimer()">Start Timer</button>
         <button class="reset" onclick="resetTimer()">Reset</button>
 
         <p id="timerResult">25:00</p>

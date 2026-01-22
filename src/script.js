@@ -81,7 +81,14 @@ function resetCountdown() {
 /* Pomodoro */
 function startTimer() {
     clearInterval(timerInterval);
-    let time = 25 * 60;
+    
+    let minutes = Number(document.getElementById("timerMinutes").value);
+    
+    if (!minutes || minutes <= 0) {
+        minutes = 25;
+    }
+    
+    let time = minutes * 60;
 
     timerInterval = setInterval(() => {
         let min = Math.floor(time / 60);
@@ -99,6 +106,12 @@ function startTimer() {
             result("timerResult", "Break Time ☕");
         }
     }, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    document.getElementById("timerMinutes").value = "";
+    result("timerResult", "25:00");
 }
 
 function resetTimer() {
