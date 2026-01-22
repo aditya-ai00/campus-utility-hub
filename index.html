@@ -83,7 +83,56 @@
     <p id="waterResult">0 / 8 glasses</p>
 </div>
 </div>
-    
+
+<!-- Task Manager-->
+     <div class="card contribution">
+        <h2>📅 Task Manager</h2>
+        <p class="description">Organize your daily tasks and boost productivity</p>
+        <button onclick="showTaskPage()">Open Task Manager</button>
+    </div>
+</div>
+
+<!-- PR #3: Task Manager Page -->
+<div id="taskPage" style="display: none;">
+    <div class="task-page">
+        <div class="header">
+            <h1>📅 Task Manager</h1>
+            <p class="subtitle">Organize your daily tasks</p>
+            <button class="back-btn" onclick="showMainPage(); return false;">← Back to Home</button>
+        </div>
+
+        <div class="task-container">
+            <div class="task-input-section">
+                <input type="text" id="taskInput" placeholder="Enter your task...">
+                <button onclick="addTask()">Add Task</button>
+            </div>
+
+            <div class="task-stats">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalTasks">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="completedTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="pendingTasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+
+            <div class="task-list-section">
+                <div class="section-header">
+                    <h2>Your Tasks</h2>
+                    <button class="reset" onclick="resetTasks()">Clear All</button>
+                </div>
+                <div id="taskList"></div>
+                <p id="emptyMessage" class="empty-message">No tasks yet. Add one to get started!</p>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="src/script.js"></script>
 
 </body>
