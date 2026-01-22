@@ -5,84 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Utility Hub</title>
     <link rel="stylesheet" href="src/style.css">
-
 </head>
 <body>
 
-<h1>🎓 Campus Utility Hub</h1>
-<p class="subtitle">Study smarter, not harder</p>
+<!-- Main Page -->
+<div id="mainPage">
+    <h1>🎓 Campus Utility Hub</h1>
+    <p class="subtitle">Study smarter, not harder</p>
 
-<div class="container">
-
-    <!-- CGPA -->
-    <div class="card cgpa">
-        <h2>📘 CGPA Calculator</h2>
-        <input type="number" id="g1" placeholder="Subject 1 GPA">
-        <input type="number" id="g2" placeholder="Subject 2 GPA">
-        <input type="number" id="g3" placeholder="Subject 3 GPA">
-
-        <button onclick="calculateCGPA()">Calculate</button>
-        <button class="reset" onclick="resetCGPA()">Reset</button>
-
-        <p id="cgpaResult"></p>
+    <!-- Background Theme Selector -->
+    <div class="theme-selector">
+        <label>Theme:</label>
+        <select id="bgTheme" onchange="changeTheme()">
+            <option value="gradient">Gradient</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="dark">Dark</option>
+        </select>
     </div>
 
-    <!-- Attendance -->
-    <div class="card attendance">
-        <h2>📊 Attendance</h2>
-        <input type="number" id="total" placeholder="Total Classes">
-        <input type="number" id="attended" placeholder="Attended Classes">
+    <div class="container">
 
-        <button onclick="calculateAttendance()">Calculate</button>
-        <button class="reset" onclick="resetAttendance()">Reset</button>
+        <!-- CGPA -->
+        <div class="card cgpa">
+            <h2>📘 CGPA Calculator</h2>
+            <input type="number" id="g1" placeholder="Subject 1 GPA">
+            <input type="number" id="g2" placeholder="Subject 2 GPA">
+            <input type="number" id="g3" placeholder="Subject 3 GPA">
 
-        <p id="attendanceResult"></p>
+            <button onclick="calculateCGPA()">Calculate</button>
+            <button class="reset" onclick="resetCGPA()">Reset</button>
+
+            <p id="cgpaResult"></p>
+        </div>
+
+        <!-- Attendance -->
+        <div class="card attendance">
+            <h2>📊 Attendance</h2>
+            <input type="number" id="total" placeholder="Total Classes">
+            <input type="number" id="attended" placeholder="Attended Classes">
+
+            <button onclick="calculateAttendance()">Calculate</button>
+            <button class="reset" onclick="resetAttendance()">Reset</button>
+
+            <p id="attendanceResult"></p>
+        </div>
+
+        <!-- Countdown -->
+        <div class="card countdown">
+            <h2>⏳ Exam Countdown</h2>
+            <input type="date" id="examDate">
+
+            <button onclick="startCountdown()">Start</button>
+            <button class="reset" onclick="resetCountdown()">Reset</button>
+
+            <p id="countdownResult"></p>
+        </div>
+
+        <!-- Pomodoro Timer -->
+        <div class="card timer">
+            <h2>🍅 Study Timer</h2>
+            
+            <div class="timer-input">
+                <label>Minutes:</label>
+                <input type="number" id="timerMinutes" placeholder="25" min="1" max="120">
+            </div>
+
+            <button onclick="startTimer()">Start Timer</button>
+            <button class="reset" onclick="resetTimer()">Reset</button>
+
+            <p id="timerResult">25:00</p>
+        </div>
+
+        <!-- EXPENSE TRACKER -->
+        <div class="card expense">
+            <h2>💰 Expense Tracker</h2>
+
+            <input type="number" id="expenseAmount" placeholder="Enter amount">
+
+            <button onclick="addExpense()">Add Expense</button>
+            <button class="reset" onclick="resetExpense()">Reset</button>
+
+            <p id="expenseResult">Total: ₹0</p>
+        </div>
+
+        <!-- WATER TRACKER -->
+        <div class="card water">
+            <h2>💧 Water Intake</h2>
+
+            <button onclick="addWater()">Add 1 Glass</button>
+            <button class="reset" onclick="resetWater()">Reset</button>
+
+            <p id="waterResult">0 / 8 glasses</p>
+        </div>
+
+        <!-- NEW FEATURE: Task Manager Link -->
+        <div class="card contribution">
+            <h2>📅 Task Manager</h2>
+            <p class="description">Organize your daily tasks and boost productivity</p>
+            <button onclick="showTaskPage()">Open Task Manager</button>
+        </div>
+
     </div>
-
-    <!-- Countdown -->
-    <div class="card countdown">
-        <h2>⏳ Exam Countdown</h2>
-        <input type="date" id="examDate">
-
-        <button onclick="startCountdown()">Start</button>
-        <button class="reset" onclick="resetCountdown()">Reset</button>
-
-        <p id="countdownResult"></p>
-    </div>
-
-    <!-- Pomodoro -->
-    <div class="card timer">
-        <h2>🍅 Study Timer</h2>
-
-        <button onclick="startTimer()">Start 25 Min</button>
-        <button class="reset" onclick="resetTimer()">Reset</button>
-
-        <p id="timerResult">25:00</p>
-    </div>
-
-    <!-- EXPENSE TRACKER -->
-<div class="card expense">
-    <h2>💰 Expense Tracker</h2>
-
-    <input type="number" id="expenseAmount" placeholder="Enter amount">
-
-    <button onclick="addExpense()">Add Expense</button>
-    <button class="reset" onclick="resetExpense()">Reset</button>
-
-    <p id="expenseResult">Total: ₹0</p>
 </div>
 
-<!-- WATER TRACKER -->
-<div class="card water">
-    <h2>💧 Water Intake</h2>
+<!-- Task Manager Page -->
+<div id="taskPage" style="display: none;">
+    <div class="task-page">
+        <div class="header">
+            <button class="back-btn" onclick="showMainPage(); return false;">← Back to Home</button>
+            <h1>📅 Task Manager</h1>
+            <p class="subtitle">Organize your daily tasks</p>
+        </div>
 
-    <button onclick="addWater()">Add 1 Glass</button>
-    <button class="reset" onclick="resetWater()">Reset</button>
+        <div class="task-container">
+            
+            <!-- Add Task Section -->
+            <div class="task-input-section">
+                <input type="text" id="taskInput" placeholder="Enter your task...">
+                <button onclick="addTask()">Add Task</button>
+            </div>
 
-    <p id="waterResult">0 / 8 glasses</p>
+            <!-- Task Statistics -->
+            <div class="task-stats">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalTasks">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="completedTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="pendingTasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+
+            <!-- Task List -->
+            <div class="task-list-section">
+                <div class="section-header">
+                    <h2>Your Tasks</h2>
+                    <button class="reset" onclick="resetTasks()">Clear All</button>
+                </div>
+                <div id="taskList"></div>
+                <p id="emptyMessage" class="empty-message">No tasks yet. Add one to get started!</p>
+            </div>
+
+        </div>
+    </div>
 </div>
-</div>
-    
+
 <script src="src/script.js"></script>
 
 </body>
