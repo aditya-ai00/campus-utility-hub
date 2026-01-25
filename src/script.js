@@ -81,14 +81,7 @@ function resetCountdown() {
 /* Pomodoro */
 function startTimer() {
     clearInterval(timerInterval);
-    
-    let minutes = Number(document.getElementById("timerMinutes").value);
-    
-    if (!minutes || minutes <= 0) {
-        minutes = 25;
-    }
-    
-    let time = minutes * 60;
+    let time = 25 * 60;
 
     timerInterval = setInterval(() => {
         let min = Math.floor(time / 60);
@@ -106,12 +99,6 @@ function startTimer() {
             result("timerResult", "Break Time ☕");
         }
     }, 1000);
-}
-
-function resetTimer() {
-    clearInterval(timerInterval);
-    document.getElementById("timerMinutes").value = "";
-    result("timerResult", "25:00");
 }
 
 function resetTimer() {
@@ -179,8 +166,106 @@ function resetWater() {
         "0 / 8 glasses";
 }
 
-/*Change Time*/
-function changeTheme() {
-    let theme = document.getElementById('bgTheme').value;
-    document.body.className = theme;
+/* ==========================
+   Task Manager
+========================== */
+let tasks = [];
+
+function showTaskPage() {
+    document.getElementById('mainPage').style.display = 'none';
+    document.getElementById('taskPage').style.display = 'block';
+    window.scrollTo(0, 0);
 }
+
+function showMainPage() {
+    document.getElementById('taskPage').style.display = 'none';
+    document.getElementById('mainPage').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+function addTask() {
+    let input = document.getElementById("taskInput");
+    let taskName = input.value.trim();
+
+    if (!taskName) return;
+
+    tasks.push({
+        id: Date.now(),
+        name: taskName,
+        completed: false
+    });
+
+    input.value = "";
+    renderTasks();
+}
+
+function toggleTask(id) {
+    let task = tasks.find(t => t.id === id);
+    if (task) {
+        task.completed = !task.completed;
+        renderTasks();
+    }
+}
+
+function deleteTask(id) {
+    tasks = tasks.filter(t => t.id !== id);
+    renderTasks();
+}
+
+function renderTasks() {
+    let list = document.getElementById("taskList");
+    let emptyMsg = document.getElementById("emptyMessage");
+    
+    if (!list || !emptyMsg) return;
+    
+    let completed = tasks.filter(t => t.completed).length;
+    let pending = tasks.length - completed;
+
+    list.innerHTML = "";
+
+    if (tasks.length === 0) {
+        emptyMsg.style.display = "block";
+    } else {
+        emptyMsg.style.display = "none";
+
+        tasks.forEach(task => {
+            let div = document.createElement("div");
+            div.className = "task-item" + (task.completed ? " completed" : "");
+
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = task.completed;
+            checkbox.onchange = () => toggleTask(task.id);
+
+            let label = document.createElement("label");
+            label.textContent = task.name;
+            label.onclick = () => toggleTask(task.id);
+
+            let btn = document.createElement("button");
+            btn.textContent = "Delete";
+            btn.onclick = () => deleteTask(task.id);
+
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            div.appendChild(btn);
+            list.appendChild(div);
+        });
+    }
+
+    document.getElementById("totalTasks").innerText = tasks.length;
+    document.getElementById("completedTasks").innerText = completed;
+    document.getElementById("pendingTasks").innerText = pending;
+}
+
+function resetTasks() {
+    if (tasks.length === 0) return;
+    
+    if (confirm("Are you sure you want to clear all tasks?")) {
+        tasks = [];
+        renderTasks();
+    }
+}
+
+window.onload = function() {
+    renderTasks();
+};
