@@ -8,9 +8,22 @@
 
 </head>
 <body>
+
+<!-- Main Page -->
 <div id="mainPage">
     <h1>🎓 Campus Utility Hub</h1>
     <p class="subtitle">Study smarter, not harder</p>
+    
+    <!-- Background Theme Selector -->
+    <div class="theme-selector">
+        <label>Theme:</label>
+        <select id="bgTheme" onchange="changeTheme()">
+            <option value="gradient">Gradient</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
 
     <div class="container">
 
@@ -42,7 +55,6 @@
         <!-- Countdown -->
         <div class="card countdown">
             <h2>⏳ Exam Countdown</h2>
-            <label for="examDate">Select exam date</label>
             <input type="date" id="examDate">
 
             <button onclick="startCountdown()">Start</button>
@@ -51,11 +63,16 @@
             <p id="countdownResult"></p>
         </div>
 
-        <!-- Pomodoro -->
+        <!-- Pomodoro:Enhancement -->
         <div class="card timer">
             <h2>🍅 Study Timer</h2>
+            
+            <div class="timer-input">
+                <label>Minutes:</label>
+                <input type="number" id="timerMinutes" placeholder="25" min="1" max="120">
+            </div>
 
-            <button onclick="startTimer()">Start 25 Min</button>
+            <button onclick="startTimer()">Start Timer</button>
             <button class="reset" onclick="resetTimer()">Reset</button>
 
             <p id="timerResult">25:00</p>
@@ -82,7 +99,7 @@
 
             <p id="waterResult">0 / 8 glasses</p>
         </div>
-
+        </div>
         <!-- Task Manager-->
             <div class="card contribution">
                 <h2>📅 Task Manager</h2>
@@ -92,7 +109,7 @@
     </div>
 </div>
 
-<!-- Task Manager Page -->
+<!-- PR #3: Task Manager Page -->
 <div id="taskPage" style="display: none;">
     <div class="task-page">
         <div class="header">
@@ -132,7 +149,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>    
 <script src="src/script.js"></script>
 
 </body>
