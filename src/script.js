@@ -165,3 +165,9 @@ function resetWater() {
     document.getElementById("waterResult").innerText =
         "0 / 8 glasses";
 }
+
+/*Change Time*/
+function changeTheme() {
+    let theme = document.getElementById('bgTheme').value;
+    document.body.className = theme;
+}
