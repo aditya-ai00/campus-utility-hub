@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Utility Hub</title>
     <link rel="stylesheet" href="src/style.css">
-
 </head>
 <body>
 
@@ -13,7 +12,7 @@
 <div id="mainPage">
     <h1>🎓 Campus Utility Hub</h1>
     <p class="subtitle">Study smarter, not harder</p>
-    
+
     <!-- Background Theme Selector -->
     <div class="theme-selector">
         <label>Theme:</label>
@@ -63,7 +62,7 @@
             <p id="countdownResult"></p>
         </div>
 
-        <!-- Pomodoro:Enhancement -->
+        <!-- Pomodoro Timer -->
         <div class="card timer">
             <h2>🍅 Study Timer</h2>
             
@@ -78,7 +77,7 @@
             <p id="timerResult">25:00</p>
         </div>
 
-            <!-- EXPENSE TRACKER -->
+        <!-- EXPENSE TRACKER -->
         <div class="card expense">
             <h2>💰 Expense Tracker</h2>
 
@@ -99,30 +98,35 @@
 
             <p id="waterResult">0 / 8 glasses</p>
         </div>
-        <!-- Task Manager-->
-            <div class="card contribution">
-                <h2>📅 Task Manager</h2>
-                <p class="description">Organize your daily tasks and boost productivity</p>
-                <button onclick="showTaskPage()">Open Task Manager</button>
-            </div>
+
+        <!-- NEW FEATURE: Task Manager Link -->
+        <div class="card contribution">
+            <h2>📅 Task Manager</h2>
+            <p class="description">Organize your daily tasks and boost productivity</p>
+            <button onclick="showTaskPage()">Open Task Manager</button>
+        </div>
+
     </div>
 </div>
 
-<!-- PR #3: Task Manager Page -->
+<!-- Task Manager Page -->
 <div id="taskPage" style="display: none;">
     <div class="task-page">
         <div class="header">
+            <button class="back-btn" onclick="showMainPage(); return false;">← Back to Home</button>
             <h1>📅 Task Manager</h1>
             <p class="subtitle">Organize your daily tasks</p>
-            <button class="back-btn" onclick="showMainPage(); return false;">← Back to Home</button>
         </div>
 
         <div class="task-container">
+            
+            <!-- Add Task Section -->
             <div class="task-input-section">
                 <input type="text" id="taskInput" placeholder="Enter your task...">
                 <button onclick="addTask()">Add Task</button>
             </div>
 
+            <!-- Task Statistics -->
             <div class="task-stats">
                 <div class="stat-box">
                     <span class="stat-number" id="totalTasks">0</span>
@@ -138,6 +142,7 @@
                 </div>
             </div>
 
+            <!-- Task List -->
             <div class="task-list-section">
                 <div class="section-header">
                     <h2>Your Tasks</h2>
@@ -146,9 +151,11 @@
                 <div id="taskList"></div>
                 <p id="emptyMessage" class="empty-message">No tasks yet. Add one to get started!</p>
             </div>
+
         </div>
     </div>
-</div>    
+</div>
+
 <script src="src/script.js"></script>
 
 </body>
