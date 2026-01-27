@@ -1,7 +1,27 @@
 let timerInterval;
 let countdownInterval;
+let tasks = [];
+let totalExpense = 0;
+let waterCount = 0;
+const waterGoal = 8;
 
-/* CGPA */
+function showTaskPage() {
+    document.getElementById('mainPage').style.display = 'none';
+    document.getElementById('taskPage').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+function showMainPage() {
+    document.getElementById('taskPage').style.display = 'none';
+    document.getElementById('mainPage').style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+function changeTheme() {
+    let theme = document.getElementById('bgTheme').value;
+    document.body.className = theme;
+}
+
 function calculateCGPA() {
     let g1 = Number(g1El().value);
     let g2 = Number(g2El().value);
@@ -23,7 +43,6 @@ function resetCGPA() {
     result("cgpaResult", "");
 }
 
-/* Attendance */
 function calculateAttendance() {
     let total = Number(document.getElementById("total").value);
     let attended = Number(document.getElementById("attended").value);
@@ -48,7 +67,6 @@ function resetAttendance() {
     result("attendanceResult", "");
 }
 
-/* Countdown */
 function startCountdown() {
     clearInterval(countdownInterval);
 
@@ -78,10 +96,16 @@ function resetCountdown() {
     result("countdownResult", "");
 }
 
-/* Pomodoro */
 function startTimer() {
     clearInterval(timerInterval);
-    let time = 25 * 60;
+    
+    let minutes = Number(document.getElementById("timerMinutes").value);
+    
+    if (!minutes || minutes <= 0) {
+        minutes = 25;
+    }
+    
+    let time = minutes * 60;
 
     timerInterval = setInterval(() => {
         let min = Math.floor(time / 60);
@@ -103,10 +127,10 @@ function startTimer() {
 
 function resetTimer() {
     clearInterval(timerInterval);
+    document.getElementById("timerMinutes").value = "";
     result("timerResult", "25:00");
 }
 
-/* Helpers */
 function result(id, text) {
     document.getElementById(id).innerText = text;
 }
@@ -114,12 +138,6 @@ function result(id, text) {
 function g1El(){ return document.getElementById("g1"); }
 function g2El(){ return document.getElementById("g2"); }
 function g3El(){ return document.getElementById("g3"); }
-
-/* ==========================
-   EXPENSE TRACKER
-========================== */
-
-let totalExpense = 0;
 
 function addExpense() {
     let amount = Number(document.getElementById("expenseAmount").value);
@@ -140,13 +158,6 @@ function resetExpense() {
     document.getElementById("expenseResult").innerText = "Total: ₹0";
 }
 
-/* ==========================
-   WATER TRACKER
-========================== */
-
-let waterCount = 0;
-const waterGoal = 8;
-
 function addWater() {
     if (waterCount < waterGoal) {
         waterCount++;
@@ -164,23 +175,6 @@ function resetWater() {
     waterCount = 0;
     document.getElementById("waterResult").innerText =
         "0 / 8 glasses";
-}
-
-/* ==========================
-   Task Manager
-========================== */
-let tasks = [];
-
-function showTaskPage() {
-    document.getElementById('mainPage').style.display = 'none';
-    document.getElementById('taskPage').style.display = 'block';
-    window.scrollTo(0, 0);
-}
-
-function showMainPage() {
-    document.getElementById('taskPage').style.display = 'none';
-    document.getElementById('mainPage').style.display = 'block';
-    window.scrollTo(0, 0);
 }
 
 function addTask() {
