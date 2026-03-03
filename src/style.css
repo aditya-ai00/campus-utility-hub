@@ -1,9 +1,15 @@
+/* ==================================
+   GLOBAL RESET
+================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ==================================
+   DEFAULT THEME (GRADIENT)
+================================== */
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
@@ -17,9 +23,17 @@ body {
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body.blue {
@@ -40,6 +54,9 @@ body.dark {
     animation: gradientShift 15s ease infinite;
 }
 
+/* ==================================
+   TYPOGRAPHY
+================================== */
 h1 {
     font-size: 48px;
     margin-top: 30px;
@@ -52,6 +69,9 @@ h1 {
     opacity: 0.9;
 }
 
+/* ==================================
+   THEME SELECTOR
+================================== */
 .theme-selector {
     display: inline-block;
     margin-bottom: 30px;
@@ -75,11 +95,9 @@ h1 {
     font-size: 14px;
 }
 
-.theme-selector select option {
-    background: #333;
-    color: white;
-}
-
+/* ==================================
+   CARD LAYOUT
+================================== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -95,45 +113,17 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     color: #333;
+    transition: 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
 }
 
-.card h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-.card .description {
-    background: none;
-    padding: 0;
-    margin: 10px 0 20px 0;
-    color: #666;
-    font-size: 14px;
-    border: none;
-}
-
-.timer-input {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.timer-input label {
-    font-weight: bold;
-    color: #333;
-    min-width: 70px;
-}
-
-.timer-input input {
-    margin: 0;
-}
-
+/* ==================================
+   FORM ELEMENTS
+================================== */
 input,
 select {
     width: 100%;
@@ -161,308 +151,90 @@ button {
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    transition: 0.3s;
 }
 
 .reset {
     background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-.reset:hover {
-    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+/* ==================================
+   MACOS PREMIUM THEME
+================================== */
+
+body.mac {
+    animation: none;
+    background: none;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1d1d1f;
 }
 
-.card p {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: #f3f4f6;
-    border-radius: 10px;
-    font-weight: bold;
+/* macOS background image */
+body.mac::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("../assets/image.PNG") no-repeat center center/cover;
+    z-index: -2;
 }
 
-.card p:empty {
-    display: none;
+/* macOS frosted blur */
+body.mac::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+    z-index: -1;
 }
 
-.cgpa {
-    border-top: 5px solid #3b82f6;
+/* macOS cards */
+body.mac .card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    color: #1d1d1f;
 }
 
-h1,
-h2 {
-    transition: transform 0.3s ease;
+/* macOS inputs */
+body.mac input,
+body.mac select {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #1d1d1f;
 }
 
-h1:hover,
-h2:hover {
-    transform: scale(1.05);
+body.mac input:focus,
+body.mac select:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
 
-.cgpa h2 {
-    color: #3b82f6;
-}
-
-.attendance {
-    border-top: 5px solid #10b981;
-}
-
-.attendance h2 {
-    color: #10b981;
-}
-
-.countdown {
-    border-top: 5px solid #f59e0b;
-}
-
-.countdown h2 {
-    color: #f59e0b;
-}
-
-.timer {
-    border-top: 5px solid #ec4899;
-}
-
-.timer h2 {
-    color: #ec4899;
-}
-
-.expense {
-    border-top: 5px solid #22c55e;
-}
-
-.expense h2 {
-    color: #22c55e;
-}
-
-.water {
-    border-top: 5px solid #0ea5e9;
-}
-
-.water h2 {
-    color: #0ea5e9;
-}
-
-.contribution {
-    border-top: 5px solid #8b5cf6;
-}
-
-.contribution h2 {
-    color: #8b5cf6;
-}
-
-.task-page {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.header {
-    position: relative;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.back-btn {
-    width: auto;
-    padding: 12px 24px;
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    font-size: 15px;
-}
-
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-.task-container {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    color: #333;
-}
-
-.task-input-section {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.task-input-section input {
-    flex: 1;
-    margin: 0;
-}
-
-.task-input-section button {
-    width: auto;
-    padding: 12px 30px;
-    margin: 0;
-}
-
-.task-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.stat-box {
-    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    border-left: 4px solid #667eea;
-}
-
-.stat-number {
-    display: block;
-    font-size: 36px;
-    font-weight: bold;
-    color: #667eea;
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    display: block;
-    font-size: 14px;
-    color: #666;
-    text-transform: uppercase;
+/* macOS primary button */
+body.mac button {
+    background: #007aff;
+    border-radius: 14px;
     font-weight: 600;
 }
 
-.task-list-section {
-    margin-top: 30px;
+body.mac button:hover {
+    background: #0066e0;
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.25);
 }
 
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #f3f4f6;
+/* macOS reset button */
+body.mac .reset {
+    background: #ff3b30;
 }
 
-.section-header h2 {
-    font-size: 20px;
-    color: #333;
-    margin: 0;
-}
-
-.section-header button {
-    width: auto;
-    padding: 8px 20px;
-    margin: 0;
-    font-size: 14px;
-}
-
-#taskList {
-    min-height: 100px;
-}
-
-.task-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    margin: 10px 0;
-    background: #f9fafb;
-    border-radius: 10px;
-    border-left: 4px solid #667eea;
-    transition: 0.3s;
-}
-
-.task-item:hover {
-    background: #f3f4f6;
-    transform: translateX(5px);
-}
-
-.task-item input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    cursor: pointer;
-}
-
-.task-item label {
-    flex: 1;
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-}
-
-.task-item.completed {
-    opacity: 0.6;
-}
-
-.task-item.completed label {
-    text-decoration: line-through;
-    color: #999;
-}
-
-.task-item button {
-    width: auto;
-    padding: 8px 15px;
-    margin: 0;
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    font-size: 14px;
-}
-
-.empty-message {
-    text-align: center;
-    color: #999;
-    padding: 40px 20px;
-    font-size: 16px;
-    background: none;
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 36px;
-    }
-    
-    .card {
-        padding: 25px;
-    }
-
-    .task-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .task-container {
-        padding: 25px;
-    }
-
-    .task-input-section {
-        flex-direction: column;
-    }
-
-    .task-input-section button {
-        width: 100%;
-    }
-
-    .back-btn {
-        position: static;
-        margin-bottom: 20px;
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 28px;
-    }
-    
-    .subtitle {
-        font-size: 16px;
-    }
-    
-    .card {
-        padding: 20px;
-    }
+body.mac .reset:hover {
+    background: #e02820;
 }
