@@ -17,9 +17,17 @@ function showMainPage() {
     window.scrollTo(0, 0);
 }
 
+/* ===============================
+   IMPROVED THEME SWITCHER
+================================= */
 function changeTheme() {
     let theme = document.getElementById('bgTheme').value;
-    document.body.className = theme;
+
+    // Remove existing theme classes safely
+    document.body.classList.remove("gradient", "blue", "purple", "dark", "mac");
+
+    // Add selected theme
+    document.body.classList.add(theme);
 }
 
 function calculateCGPA() {
@@ -55,10 +63,7 @@ function calculateAttendance() {
     let percent = (attended / total) * 100;
     let status = percent >= 75 ? "Safe ✅" : "Shortage ⚠️";
 
-    result(
-        "attendanceResult",
-        percent.toFixed(2) + "% — " + status
-    );
+    result("attendanceResult", percent.toFixed(2) + "% — " + status);
 }
 
 function resetAttendance() {
@@ -98,23 +103,20 @@ function resetCountdown() {
 
 function startTimer() {
     clearInterval(timerInterval);
-    
+
     let minutes = Number(document.getElementById("timerMinutes").value);
-    
+
     if (!minutes || minutes <= 0) {
         minutes = 25;
     }
-    
+
     let time = minutes * 60;
 
     timerInterval = setInterval(() => {
         let min = Math.floor(time / 60);
         let sec = time % 60;
 
-        result(
-            "timerResult",
-            min + ":" + (sec < 10 ? "0" : "") + sec
-        );
+        result("timerResult", min + ":" + (sec < 10 ? "0" : "") + sec);
 
         time--;
 
@@ -135,13 +137,12 @@ function result(id, text) {
     document.getElementById(id).innerText = text;
 }
 
-function g1El(){ return document.getElementById("g1"); }
-function g2El(){ return document.getElementById("g2"); }
-function g3El(){ return document.getElementById("g3"); }
+function g1El() { return document.getElementById("g1"); }
+function g2El() { return document.getElementById("g2"); }
+function g3El() { return document.getElementById("g3"); }
 
 function addExpense() {
     let amount = Number(document.getElementById("expenseAmount").value);
-
     if (amount <= 0) return;
 
     totalExpense += amount;
@@ -173,14 +174,12 @@ function addWater() {
 
 function resetWater() {
     waterCount = 0;
-    document.getElementById("waterResult").innerText =
-        "0 / 8 glasses";
+    document.getElementById("waterResult").innerText = "0 / 8 glasses";
 }
 
 function addTask() {
     let input = document.getElementById("taskInput");
     let taskName = input.value.trim();
-
     if (!taskName) return;
 
     tasks.push({
@@ -209,9 +208,8 @@ function deleteTask(id) {
 function renderTasks() {
     let list = document.getElementById("taskList");
     let emptyMsg = document.getElementById("emptyMessage");
-    
     if (!list || !emptyMsg) return;
-    
+
     let completed = tasks.filter(t => t.completed).length;
     let pending = tasks.length - completed;
 
@@ -253,13 +251,13 @@ function renderTasks() {
 
 function resetTasks() {
     if (tasks.length === 0) return;
-    
+
     if (confirm("Are you sure you want to clear all tasks?")) {
         tasks = [];
         renderTasks();
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     renderTasks();
 };
