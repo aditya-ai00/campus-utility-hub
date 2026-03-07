@@ -132,54 +132,85 @@ function resetCGPA() {
 
 function calculateAttendance() {
 
-    let total = Number(document.getElementById("total").value);
+    let semesterTotal = Number(document.getElementById("total").value);
     let attended = Number(document.getElementById("attended").value);
     let remaining = Number(document.getElementById("remaining").value);
 
-    if (total <= 0 || attended > total) {
+    /* classes missed so far */
 
-        result("attendanceResult","Invalid input");
+    let missed = semesterTotal - attended - remaining;
+
+    if (
+        semesterTotal <= 0 ||
+        attended < 0 ||
+        remaining < 0 ||
+        missed < 0
+    ) {
+
+        result("attendanceResult", "Invalid input");
+
         document.getElementById("attendanceAdvice").innerText = "";
         document.getElementById("attendanceFuture").innerText = "";
+
         return;
     }
 
-    let percent = (attended / total) * 100;
+    /* current attendance */
+
+    let classesCompleted = attended + missed;
+
+    let percent = (attended / classesCompleted) * 100;
+
     let status = percent >= 75 ? "Safe ✅" : "Shortage ⚠️";
 
     result("attendanceResult", percent.toFixed(2) + "% — " + status);
 
+    /* update dashboard */
+
     const summary = document.getElementById("summaryAttendance");
+
     if (summary) summary.innerText = percent.toFixed(1) + "%";
 
     const required = 0.75;
 
-    if (percent < 75) {
+    /* maximum possible attendance */
 
-        let classesNeeded = Math.ceil((required * total - attended) / (1 - required));
+    let maxAttendance =
+        ((attended + remaining) / semesterTotal) * 100;
 
-        document.getElementById("attendanceAdvice").innerText =
-        "Attend next " + classesNeeded + " classes to reach 75%";
+    /* CASE 1 — impossible to reach 75 */
 
-    } else {
-
-        let bunk = Math.floor((attended - required * total) / required);
+    if (maxAttendance < 75) {
 
         document.getElementById("attendanceAdvice").innerText =
-        "You can skip next " + bunk + " classes safely";
+        "⚠️ It is NOT possible to reach 75% attendance this semester.";
+
+    }
+
+    /* CASE 2 — recovery possible */
+
+    else {
+
+        let classesNeeded = Math.ceil(
+            (required * semesterTotal) - attended
+        );
+
+        document.getElementById("attendanceAdvice").innerText =
+        "Attend next " + classesNeeded +
+        " classes to reach 75% attendance.";
     }
 
     /* future prediction */
 
-    if (remaining > 0) {
-
-        let maxAttendance = ((attended + remaining) / (total + remaining)) * 100;
-
-        document.getElementById("attendanceFuture").innerText =
-        "Maximum possible attendance this semester: " +
-        maxAttendance.toFixed(2) + "%";
-    }
+    document.getElementById("attendanceFuture").innerText =
+    "Maximum possible attendance this semester: " +
+    maxAttendance.toFixed(2) + "%";
 }
+
+
+/* ===============================
+   RESET ATTENDANCE
+================================= */
 
 function resetAttendance() {
 
@@ -187,11 +218,12 @@ function resetAttendance() {
     document.getElementById("attended").value = "";
     document.getElementById("remaining").value = "";
 
-    result("attendanceResult","");
+    document.getElementById("attendanceResult").innerText = "";
     document.getElementById("attendanceAdvice").innerText = "";
     document.getElementById("attendanceFuture").innerText = "";
 
     const summary = document.getElementById("summaryAttendance");
+
     if (summary) summary.innerText = "--";
 }
 
