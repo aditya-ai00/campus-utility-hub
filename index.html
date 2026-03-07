@@ -10,30 +10,31 @@
     <link rel="stylesheet" href="src/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body>
 
-    <!-- =========================
-GLOBAL HEADER
-========================== -->
     <header class="site-header">
         <div class="header-content">
-            <h1 class="logo">🎓 Campus Utility Hub</h1>
+
+            <h1 class="logo">
+                <i data-lucide="graduation-cap"></i>
+                Campus Utility Hub
+            </h1>
+
             <p class="tagline">All your academic tools in one place</p>
             <p class="tagline">Study smarter, not harder</p>
+
         </div>
     </header>
 
 
-    <!-- =========================
-MAIN PAGE
-========================== -->
     <div id="mainPage">
 
-        <!-- =========================
-THEME SELECTOR
-========================== -->
+
         <div class="theme-selector">
 
             <label>Theme:</label>
@@ -46,8 +47,6 @@ THEME SELECTOR
                 <option value="mac">Mac</option>
             </select>
 
-
-            <!-- AUTO MODE TOGGLE -->
             <div class="auto-toggle">
                 <span>Auto</span>
 
@@ -60,11 +59,41 @@ THEME SELECTOR
         </div>
 
 
+        <div class="dashboard-summary">
+
+            <div class="summary-card">
+                <h3>CGPA</h3>
+                <p id="summaryCGPA">--</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>Attendance</h3>
+                <p id="summaryAttendance">--</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>Tasks</h3>
+                <p id="summaryTasks">0</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>Expenses</h3>
+                <p id="summaryExpense">₹0</p>
+            </div>
+
+        </div>
+
+
         <div class="container">
+
 
             <!-- CGPA -->
             <div class="card cgpa">
-                <h2>📘 CGPA Calculator</h2>
+
+                <h2>
+                    <i data-lucide="calculator"></i>
+                    CGPA Calculator
+                </h2>
 
                 <input type="number" id="g1" placeholder="Subject 1 GPA">
                 <input type="number" id="g2" placeholder="Subject 2 GPA">
@@ -74,26 +103,39 @@ THEME SELECTOR
                 <button class="reset" onclick="resetCGPA()">Reset</button>
 
                 <p id="cgpaResult"></p>
+
             </div>
 
 
             <!-- Attendance -->
             <div class="card attendance">
-                <h2>📊 Attendance</h2>
+
+                <h2>
+                    <i data-lucide="calendar-check"></i>
+                    Smart Attendance Predictor
+                </h2>
 
                 <input type="number" id="total" placeholder="Total Classes">
                 <input type="number" id="attended" placeholder="Attended Classes">
+                <input type="number" id="remaining" placeholder="Remaining Classes in Semester">
 
                 <button onclick="calculateAttendance()">Calculate</button>
                 <button class="reset" onclick="resetAttendance()">Reset</button>
 
                 <p id="attendanceResult"></p>
+                <p id="attendanceAdvice"></p>
+                <p id="attendanceFuture"></p>
+
             </div>
 
 
             <!-- Countdown -->
             <div class="card countdown">
-                <h2>⏳ Exam Countdown</h2>
+
+                <h2>
+                    <i data-lucide="clock"></i>
+                    Exam Countdown
+                </h2>
 
                 <input type="date" id="examDate">
 
@@ -101,13 +143,17 @@ THEME SELECTOR
                 <button class="reset" onclick="resetCountdown()">Reset</button>
 
                 <p id="countdownResult"></p>
+
             </div>
 
 
-            <!-- Pomodoro Timer -->
+            <!-- Pomodoro -->
             <div class="card timer">
 
-                <h2>🍅 Study Timer</h2>
+                <h2>
+                    <i data-lucide="timer"></i>
+                    Study Timer
+                </h2>
 
                 <div class="timer-input">
                     <label>Minutes:</label>
@@ -122,10 +168,13 @@ THEME SELECTOR
             </div>
 
 
-            <!-- Expense Tracker -->
+            <!-- Expense -->
             <div class="card expense">
 
-                <h2>💰 Expense Tracker</h2>
+                <h2>
+                    <i data-lucide="wallet"></i>
+                    Expense Tracker
+                </h2>
 
                 <input type="number" id="expenseAmount" placeholder="Enter amount">
 
@@ -137,10 +186,13 @@ THEME SELECTOR
             </div>
 
 
-            <!-- Water Tracker -->
+            <!-- Water -->
             <div class="card water">
 
-                <h2>💧 Water Intake</h2>
+                <h2>
+                    <i data-lucide="droplet"></i>
+                    Water Intake
+                </h2>
 
                 <button onclick="addWater()">Add 1 Glass</button>
                 <button class="reset" onclick="resetWater()">Reset</button>
@@ -150,10 +202,32 @@ THEME SELECTOR
             </div>
 
 
+            <!-- Semester Planner -->
+            <div class="card planner">
+
+                <h2>
+                    <i data-lucide="book-open"></i>
+                    Semester Planner
+                </h2>
+
+                <input type="number" id="subjects" placeholder="Total Subjects">
+                <input type="number" id="targetCgpa" placeholder="Target CGPA">
+
+                <button onclick="calculatePlanner()">Calculate Plan</button>
+                <button class="reset" onclick="resetPlanner()">Reset</button>
+
+                <p id="plannerResult"></p>
+
+            </div>
+
+
             <!-- Task Manager -->
             <div class="card contribution">
 
-                <h2>📅 Task Manager</h2>
+                <h2>
+                    <i data-lucide="check-square"></i>
+                    Task Manager
+                </h2>
 
                 <p class="description">
                     Organize your daily tasks and boost productivity
@@ -169,9 +243,6 @@ THEME SELECTOR
     </div>
 
 
-    <!-- =========================
-TASK MANAGER PAGE
-========================== -->
     <div id="taskPage" style="display:none;">
 
         <div class="task-page">
@@ -182,7 +253,10 @@ TASK MANAGER PAGE
                     ← Back to Home
                 </button>
 
-                <h1>📅 Task Manager</h1>
+                <h1>
+                    <i data-lucide="check-square"></i>
+                    Task Manager
+                </h1>
 
                 <p class="subtitle">
                     Organize your daily tasks
@@ -251,9 +325,6 @@ TASK MANAGER PAGE
     </div>
 
 
-    <!-- =========================
-FOOTER
-========================== -->
     <footer class="site-footer">
 
         <p>© 2026 Campus Utility Hub</p>
@@ -271,6 +342,10 @@ FOOTER
 
 
     <script src="src/script.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
 
 </body>
 
