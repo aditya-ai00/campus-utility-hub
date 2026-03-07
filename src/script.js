@@ -5,6 +5,12 @@ let totalExpense = 0;
 let waterCount = 0;
 const waterGoal = 8;
 
+let autoThemeEnabled = false;
+
+/* ===============================
+   PAGE SWITCHING
+================================= */
+
 function showTaskPage() {
     document.getElementById('mainPage').style.display = 'none';
     document.getElementById('taskPage').style.display = 'block';
@@ -18,19 +24,85 @@ function showMainPage() {
 }
 
 /* ===============================
-   IMPROVED THEME SWITCHER
+   MANUAL THEME SWITCH
 ================================= */
+
 function changeTheme() {
+
+    if (autoThemeEnabled) return;
+
     let theme = document.getElementById('bgTheme').value;
 
-    // Remove existing theme classes safely
     document.body.classList.remove("gradient", "blue", "purple", "dark", "mac");
-
-    // Add selected theme
     document.body.classList.add(theme);
+
+    localStorage.setItem("campusTheme", theme);
 }
 
+/* ===============================
+   AUTO THEME TOGGLE
+================================= */
+
+function toggleAutoTheme() {
+
+    const toggle = document.getElementById("autoThemeToggle");
+    const selector = document.getElementById("bgTheme");
+
+    autoThemeEnabled = toggle.checked;
+
+    if (autoThemeEnabled) {
+
+        selector.disabled = true;
+        applySystemTheme();
+
+    } else {
+
+        selector.disabled = false;
+
+        const savedTheme = localStorage.getItem("campusTheme");
+
+        if (savedTheme) {
+            document.body.classList.remove("gradient","blue","purple","dark","mac");
+            document.body.classList.add(savedTheme);
+        }
+    }
+}
+
+/* ===============================
+   SYSTEM THEME DETECTION
+================================= */
+
+function applySystemTheme() {
+
+    if (!autoThemeEnabled) return;
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    document.body.classList.remove("gradient","blue","purple","dark","mac");
+
+    if (prefersDark) {
+
+        document.body.classList.add("dark");
+
+    } else {
+
+        document.body.classList.add("mac");
+
+    }
+}
+
+/* Detect OS theme change */
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+    applySystemTheme();
+});
+
+/* ===============================
+   CGPA CALCULATOR
+================================= */
+
 function calculateCGPA() {
+
     let g1 = Number(g1El().value);
     let g2 = Number(g2El().value);
     let g3 = Number(g3El().value);
@@ -41,17 +113,25 @@ function calculateCGPA() {
     }
 
     let cgpa = (g1 + g2 + g3) / 3;
+
     result("cgpaResult", "CGPA: " + cgpa.toFixed(2));
 }
 
 function resetCGPA() {
+
     g1El().value = "";
     g2El().value = "";
     g3El().value = "";
+
     result("cgpaResult", "");
 }
 
+/* ===============================
+   ATTENDANCE CALCULATOR
+================================= */
+
 function calculateAttendance() {
+
     let total = Number(document.getElementById("total").value);
     let attended = Number(document.getElementById("attended").value);
 
@@ -67,24 +147,34 @@ function calculateAttendance() {
 }
 
 function resetAttendance() {
+
     document.getElementById("total").value = "";
     document.getElementById("attended").value = "";
+
     result("attendanceResult", "");
 }
 
+/* ===============================
+   EXAM COUNTDOWN
+================================= */
+
 function startCountdown() {
+
     clearInterval(countdownInterval);
 
     let date = new Date(document.getElementById("examDate").value);
 
     countdownInterval = setInterval(() => {
+
         let now = new Date();
         let diff = date - now;
 
         if (diff <= 0) {
+
             result("countdownResult", "Exam Day 🎉");
             clearInterval(countdownInterval);
             return;
+
         }
 
         let d = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -92,16 +182,25 @@ function startCountdown() {
         let m = Math.floor((diff / (1000 * 60)) % 60);
 
         result("countdownResult", `${d}d ${h}h ${m}m left`);
+
     }, 1000);
 }
 
 function resetCountdown() {
+
     clearInterval(countdownInterval);
+
     document.getElementById("examDate").value = "";
+
     result("countdownResult", "");
 }
 
+/* ===============================
+   STUDY TIMER
+================================= */
+
 function startTimer() {
+
     clearInterval(timerInterval);
 
     let minutes = Number(document.getElementById("timerMinutes").value);
@@ -113,6 +212,7 @@ function startTimer() {
     let time = minutes * 60;
 
     timerInterval = setInterval(() => {
+
         let min = Math.floor(time / 60);
         let sec = time % 60;
 
@@ -121,17 +221,27 @@ function startTimer() {
         time--;
 
         if (time < 0) {
+
             clearInterval(timerInterval);
             result("timerResult", "Break Time ☕");
+
         }
+
     }, 1000);
 }
 
 function resetTimer() {
+
     clearInterval(timerInterval);
+
     document.getElementById("timerMinutes").value = "";
+
     result("timerResult", "25:00");
 }
+
+/* ===============================
+   HELPER FUNCTIONS
+================================= */
 
 function result(id, text) {
     document.getElementById(id).innerText = text;
@@ -141,8 +251,14 @@ function g1El() { return document.getElementById("g1"); }
 function g2El() { return document.getElementById("g2"); }
 function g3El() { return document.getElementById("g3"); }
 
+/* ===============================
+   EXPENSE TRACKER
+================================= */
+
 function addExpense() {
+
     let amount = Number(document.getElementById("expenseAmount").value);
+
     if (amount <= 0) return;
 
     totalExpense += amount;
@@ -154,12 +270,19 @@ function addExpense() {
 }
 
 function resetExpense() {
+
     totalExpense = 0;
+
     document.getElementById("expenseAmount").value = "";
     document.getElementById("expenseResult").innerText = "Total: ₹0";
 }
 
+/* ===============================
+   WATER TRACKER
+================================= */
+
 function addWater() {
+
     if (waterCount < waterGoal) {
         waterCount++;
     }
@@ -173,13 +296,21 @@ function addWater() {
 }
 
 function resetWater() {
+
     waterCount = 0;
+
     document.getElementById("waterResult").innerText = "0 / 8 glasses";
 }
 
+/* ===============================
+   TASK MANAGER
+================================= */
+
 function addTask() {
+
     let input = document.getElementById("taskInput");
     let taskName = input.value.trim();
+
     if (!taskName) return;
 
     tasks.push({
@@ -193,7 +324,9 @@ function addTask() {
 }
 
 function toggleTask(id) {
+
     let task = tasks.find(t => t.id === id);
+
     if (task) {
         task.completed = !task.completed;
         renderTasks();
@@ -201,13 +334,16 @@ function toggleTask(id) {
 }
 
 function deleteTask(id) {
+
     tasks = tasks.filter(t => t.id !== id);
     renderTasks();
 }
 
 function renderTasks() {
+
     let list = document.getElementById("taskList");
     let emptyMsg = document.getElementById("emptyMessage");
+
     if (!list || !emptyMsg) return;
 
     let completed = tasks.filter(t => t.completed).length;
@@ -216,12 +352,17 @@ function renderTasks() {
     list.innerHTML = "";
 
     if (tasks.length === 0) {
+
         emptyMsg.style.display = "block";
+
     } else {
+
         emptyMsg.style.display = "none";
 
         tasks.forEach(task => {
+
             let div = document.createElement("div");
+
             div.className = "task-item" + (task.completed ? " completed" : "");
 
             let checkbox = document.createElement("input");
@@ -240,6 +381,7 @@ function renderTasks() {
             div.appendChild(checkbox);
             div.appendChild(label);
             div.appendChild(btn);
+
             list.appendChild(div);
         });
     }
@@ -250,14 +392,28 @@ function renderTasks() {
 }
 
 function resetTasks() {
+
     if (tasks.length === 0) return;
 
     if (confirm("Are you sure you want to clear all tasks?")) {
+
         tasks = [];
         renderTasks();
+
     }
 }
 
+/* ===============================
+   INITIAL LOAD
+================================= */
+
 window.onload = function () {
+
     renderTasks();
+
+    const toggle = document.getElementById("autoThemeToggle");
+
+    if (toggle && toggle.checked) {
+        toggleAutoTheme();
+    }
 };
