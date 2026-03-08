@@ -398,7 +398,112 @@ function resetWater(){
     waterCount = 0;
     document.getElementById("waterResult").innerText="0 / 8 glasses";
 }
+/* ===============================
+   STUDY NOTEPAD
+================================= */
 
+function saveNotes() {
+
+    let notes = document.getElementById("studyNotes").value;
+
+    localStorage.setItem("studyNotes", notes);
+
+    alert("Notes saved successfully!");
+}
+
+function clearNotes() {
+
+    document.getElementById("studyNotes").value = "";
+
+    localStorage.removeItem("studyNotes");
+}
+
+/* Load notes on page load */
+
+function loadNotes() {
+
+    let saved = localStorage.getItem("studyNotes");
+
+    if (saved) {
+        document.getElementById("studyNotes").value = saved;
+    }
+}
+
+/* ===============================
+   STUDY PROGRESS TRACKER
+================================= */
+
+function updateProgress(){
+
+let value = Number(document.getElementById("progressInput").value);
+
+if(value < 0 || value > 100){
+alert("Enter a value between 0 and 100");
+return;
+}
+
+/* CARD PROGRESS */
+
+const bar = document.getElementById("progressBar");
+
+bar.style.width = value + "%";
+
+document.getElementById("progressText").innerText = value + "%";
+
+/* DASHBOARD TIMELINE */
+
+const fill = document.getElementById("dashboardProgressFill");
+const dot = document.getElementById("dashboardProgressDot");
+
+if(fill) fill.style.width = value + "%";
+if(dot) dot.style.left = value + "%";
+
+/* LABEL */
+
+const summary = document.getElementById("summaryProgress");
+if(summary) summary.innerText = value + "% Study Progress";
+
+localStorage.setItem("studyProgress", value);
+}
+
+
+function resetProgress() {
+
+    document.getElementById("progressInput").value = "";
+
+    document.getElementById("progressBar").style.width = "0%";
+
+    document.getElementById("progressText").innerText = "0%";
+
+    /* RESET DASHBOARD SUMMARY */
+
+    const summary = document.getElementById("summaryProgress");
+
+    if (summary) summary.innerText = "0%";
+
+    localStorage.removeItem("studyProgress");
+}
+
+
+function loadProgress() {
+
+    let saved = localStorage.getItem("studyProgress");
+
+    if (saved) {
+
+        document.getElementById("progressBar").style.width =
+            saved + "%";
+
+        document.getElementById("progressText").innerText =
+            saved + "%";
+
+        /* LOAD DASHBOARD SUMMARY */
+
+        const summary = document.getElementById("summaryProgress");
+
+        if (summary) summary.innerText = saved + "%";
+    }
+}
 /* ===============================
    TASK MANAGER
 ================================= */
@@ -511,6 +616,8 @@ function resetTasks(){
 window.onload = function(){
 
     renderTasks();
+    loadNotes();
+    loadProgress();
 
     const toggle = document.getElementById("autoThemeToggle");
 
