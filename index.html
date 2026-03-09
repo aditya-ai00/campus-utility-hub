@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/lucide@latest"></script>
-
 </head>
+
 
 <body>
 
@@ -54,10 +54,12 @@
                     <input type="checkbox" id="autoThemeToggle" onchange="toggleAutoTheme()">
                     <span class="slider"></span>
                 </label>
-            </div>
 
+            </div>
         </div>
 
+
+        <!-- DASHBOARD SUMMARY -->
 
         <div class="dashboard-summary">
 
@@ -80,6 +82,23 @@
                 <h3>Expenses</h3>
                 <p id="summaryExpense">₹0</p>
             </div>
+
+        </div>
+
+
+        <!-- STUDY PROGRESS TIMELINE -->
+
+        <div class="dashboard-progress">
+
+            <div class="progress-line">
+
+                <div class="progress-fill" id="dashboardProgressFill"></div>
+
+                <div class="progress-dot" id="dashboardProgressDot"></div>
+
+            </div>
+
+            <p class="progress-label" id="summaryProgress">0% Study Progress</p>
 
         </div>
 
@@ -202,7 +221,25 @@
             </div>
 
 
+            <!-- STUDY NOTEPAD -->
+
+            <div class="card notepad">
+
+                <h2>
+                    <i data-lucide="notebook"></i>
+                    Study Notepad
+                </h2>
+
+                <textarea id="studyNotes" placeholder="Write your study notes here..." rows="6"></textarea>
+
+                <button onclick="saveNotes()">Save Notes</button>
+                <button class="reset" onclick="clearNotes()">Clear Notes</button>
+
+            </div>
+
+
             <!-- Semester Planner -->
+
             <div class="card planner">
 
                 <h2>
@@ -221,7 +258,31 @@
             </div>
 
 
+            <!-- STUDY PROGRESS TRACKER -->
+
+            <div class="card progress">
+
+                <h2>
+                    <i data-lucide="bar-chart-3"></i>
+                    Study Progress
+                </h2>
+
+                <input type="number" id="progressInput" placeholder="Enter progress %" min="0" max="100">
+
+                <button onclick="updateProgress()">Update Progress</button>
+                <button class="reset" onclick="resetProgress()">Reset</button>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <p id="progressText">0%</p>
+
+            </div>
+
+
             <!-- Task Manager -->
+
             <div class="card contribution">
 
                 <h2>
@@ -240,88 +301,6 @@
             </div>
 
         </div>
-    </div>
-
-
-    <div id="taskPage" style="display:none;">
-
-        <div class="task-page">
-
-            <div class="header">
-
-                <button class="back-btn" onclick="showMainPage(); return false;">
-                    ← Back to Home
-                </button>
-
-                <h1>
-                    <i data-lucide="check-square"></i>
-                    Task Manager
-                </h1>
-
-                <p class="subtitle">
-                    Organize your daily tasks
-                </p>
-
-            </div>
-
-
-            <div class="task-container">
-
-                <div class="task-input-section">
-
-                    <input type="text" id="taskInput" placeholder="Enter your task...">
-
-                    <button onclick="addTask()">
-                        Add Task
-                    </button>
-
-                </div>
-
-
-                <div class="task-stats">
-
-                    <div class="stat-box">
-                        <span class="stat-number" id="totalTasks">0</span>
-                        <span class="stat-label">Total</span>
-                    </div>
-
-                    <div class="stat-box">
-                        <span class="stat-number" id="completedTasks">0</span>
-                        <span class="stat-label">Completed</span>
-                    </div>
-
-                    <div class="stat-box">
-                        <span class="stat-number" id="pendingTasks">0</span>
-                        <span class="stat-label">Pending</span>
-                    </div>
-
-                </div>
-
-
-                <div class="task-list-section">
-
-                    <div class="section-header">
-
-                        <h2>Your Tasks</h2>
-
-                        <button class="reset" onclick="resetTasks()">
-                            Clear All
-                        </button>
-
-                    </div>
-
-                    <div id="taskList"></div>
-
-                    <p id="emptyMessage" class="empty-message">
-                        No tasks yet. Add one to get started!
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
 
