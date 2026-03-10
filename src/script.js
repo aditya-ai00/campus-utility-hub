@@ -125,7 +125,24 @@ function resetCGPA() {
     const summary = document.getElementById("summaryCGPA");
     if (summary) summary.innerText = "--";
 }
+function calculatePI(){
+let c1 = document.getElementById("credit1").value;
+let g1 = document.getElementById("gpa1").value;
+let c2 = document.getElementById("credit2").value;
+let g2 = document.getElementById("gpa2").value;
 
+let pi = ((c1*g1)+(c2*g2))/(Number(c1)+Number(c2));
+
+document.getElementById("piResult").innerText = "PI: " + pi.toFixed(2);
+}
+
+function resetPI(){
+document.getElementById("credit1").value="";
+document.getElementById("gpa1").value="";
+document.getElementById("credit2").value="";
+document.getElementById("gpa2").value="";
+document.getElementById("piResult").innerText="";
+}
 /* ===============================
    SMART ATTENDANCE PREDICTOR
 ================================= */
