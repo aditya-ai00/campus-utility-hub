@@ -195,10 +195,18 @@
                 <button onclick="startTimer()">Start Timer</button>
                 <button class="reset" onclick="resetTimer()">Reset</button>
 
-                <p id="timerResult">25:00</p>
+                <div class="timer-display">
 
+                    <span id="timerMinutesDisplay">25</span>
+                    <span class="timer-colon">:</span>
+
+                    <span id="timerSecondsDisplay">00</span>
+                    <span class="timer-colon">:</span>
+
+                    <span id="timerMsDisplay">00</span>
+
+                </div>
             </div>
-
 
             <!-- Expense -->
             <div class="card expense">

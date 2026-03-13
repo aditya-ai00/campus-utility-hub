@@ -322,33 +322,65 @@ function startTimer(){
     clearInterval(timerInterval);
 
     let minutes = Number(document.getElementById("timerMinutes").value);
-    if(!minutes || minutes <=0) minutes = 25;
 
-    let time = minutes * 60;
+    if(!minutes || minutes <= 0) minutes = 25;
+
+    /* activate glow animation */
+
+    const display = document.querySelector(".timer-display");
+    if(display) display.classList.add("timer-running");
+
+    /* convert minutes → hundredth seconds */
+
+    let time = minutes * 60 * 100;
 
     timerInterval = setInterval(()=>{
 
-        let min = Math.floor(time/60);
-        let sec = time % 60;
+        let min = Math.floor(time / 6000);
+        let sec = Math.floor((time % 6000) / 100);
+        let ms  = time % 100;
 
-        result("timerResult", min + ":" + (sec<10?"0":"") + sec);
+        document.getElementById("timerMinutesDisplay").innerText =
+            min < 10 ? "0"+min : min;
+
+        document.getElementById("timerSecondsDisplay").innerText =
+            sec < 10 ? "0"+sec : sec;
+
+        document.getElementById("timerMsDisplay").innerText =
+            ms < 10 ? "0"+ms : ms;
 
         time--;
 
-        if(time<0){
+        if(time < 0){
+
             clearInterval(timerInterval);
-            result("timerResult","Break Time ☕");
+
+            document.getElementById("timerMinutesDisplay").innerText = "00";
+            document.getElementById("timerSecondsDisplay").innerText = "00";
+            document.getElementById("timerMsDisplay").innerText = "00";
+
+            if(display) display.classList.remove("timer-running");
+
+            alert("Break Time ☕");
+
         }
 
-    },1000);
+    },10); // update every 10ms
 }
+
 
 function resetTimer(){
 
     clearInterval(timerInterval);
 
-    document.getElementById("timerMinutes").value="";
-    result("timerResult","25:00");
+    document.getElementById("timerMinutes").value = "";
+
+    document.getElementById("timerMinutesDisplay").innerText = "25";
+    document.getElementById("timerSecondsDisplay").innerText = "00";
+    document.getElementById("timerMsDisplay").innerText = "00";
+
+    const display = document.querySelector(".timer-display");
+    if(display) display.classList.remove("timer-running");
 }
 
 /* ===============================
