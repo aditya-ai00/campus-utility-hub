@@ -14,50 +14,89 @@ It brings essential academic and productivity tools together in one simple, brow
 
 
 
-## ✨ Features
+## 🚀 Features
 
-📘 **CGPA Calculator**  
-Calculate CGPA instantly using subject GPA values.
+📘 **CGPA Calculator**
+Calculate your CGPA instantly by entering GPA values for different subjects. Provides quick results without page reload.
 
-📊 **Attendance Calculator**  
-Find the attendance percentage and the shortage status.
+🧮 **PI Calculator**
+Calculate Performance Index (PI) using subject credits and GPA values for accurate academic performance tracking.
 
-⏳ **Exam Countdown Timer**  
-Live countdown to upcoming exams.
+📊 **Smart Attendance Predictor**
+Predict attendance percentage and check whether reaching the 75% attendance requirement is still possible based on remaining classes.
 
-🍅 **Study Timer (Pomodoro)**  
-25-minute focus timer with reset option.
+⏳ **Exam Countdown Timer**
+Set your exam date and view a live countdown showing the remaining time until the exam.
 
-💰 **Expense Tracker**  
-Track daily spending and total expenses.
+⏱ **Digital Study Timer**
+A Pomodoro-style study timer with a digital display showing minutes, seconds, and milliseconds for focused study sessions.
 
-💧 **Water Intake Tracker**  
-Monitor daily hydration goals.
+💰 **Expense Tracker**
+Track daily spending by adding expenses and automatically calculating the total amount spent.
 
-🎨 **Modern Colourful UI**  
-Gradient background with card-based layout.
+💧 **Water Intake Tracker**
+Monitor your daily hydration by tracking the number of glasses of water consumed.
 
-⚡ **Instant Calculations**  
-Real-time updates without page reload.
+📝 **Study Notepad**
+Write and save quick study notes directly in the dashboard using browser local storage.
 
-📱 **Responsive Design**  
-Works smoothly on desktop, tablet, and mobile.
+📅 **Semester Planner**
+Plan your semester by calculating the required GPA per subject to achieve your target CGPA.
+
+📈 **Study Progress Tracker**
+Track study progress with an animated progress bar and dashboard progress summary.
+
+📋 **Task Manager**
+Manage daily tasks efficiently with the ability to add, complete, and track tasks.
+
+🎨 **Multiple Theme Support**
+Switch between Gradient, Blue, Purple, Dark, and Mac-style themes for a personalized UI experience.
+
+⚡ **Real-Time Calculations**
+All tools perform instant calculations without refreshing the page.
+
+📱 **Responsive Design**
+Fully responsive layout that works smoothly on desktop, tablet, and mobile devices.
 
 ---
 
 
-## 📸 Preview
-<img width="1221" height="756" alt="Screenshot 2026-01-18 at 18 35 24" src="https://github.com/user-attachments/assets/e6ad9e34-ed23-4967-8567-78ec8653e908" />
+## 📸 Project Preview
 
+### 🎨 Dashboard Themes
+
+#### 🌈 Gradient Theme
+<img width="1200" alt="Gradient Theme Dashboard" src="assets/screenshots/gradient.png">
+
+#### 🔵 Blue Theme
+<img width="1200" alt="Blue Theme Dashboard" src="assets/screenshots/blue.png">
+
+#### 🟣 Purple Theme
+<img width="1200" alt="Purple Theme Dashboard" src="assets/screenshots/purple.png">
+
+#### 🌙 Dark Theme
+<img width="1200" alt="Dark Theme Dashboard" src="assets/screenshots/dark.png">
+
+#### 🍎 Mac Theme
+<img width="1200" alt="Mac Theme Dashboard" src="assets/screenshots/mac.png">
+
+
+---
+
+### 🧰 Dashboard Tools & Features
+
+<img width="1200" alt="Dashboard Feature" src="assets/screenshots/pic_01.png">
+
+<img width="1200" alt="dashboard Feature" src="assets/screenshots/pic_02.png">
 
 ---
 
 ## 🛠️ Built With
 
-- **HTML5** – Structure  
-- **CSS3** – Styling and layout  
-- **JavaScript (Vanilla)** – Logic and interactivity  
-- **GitHub Pages** – Hosting and deployment  
+- **HTML5** – Structure
+- **CSS3** – Styling and layout
+- **JavaScript (Vanilla)** – Logic and interactivity
+- **GitHub Pages** – Hosting and deployment
 
 No frameworks. No backend. Fully browser-based.
 
@@ -84,7 +123,7 @@ The codebase is intentionally simple so **first-time contributors can participat
 
 git clone https://github.com/aditya-ai00/campus-utility-hub.git
 
-### 2. Open the project 
+### 2. Open the project
 
 cd campus-utility-hub
 
